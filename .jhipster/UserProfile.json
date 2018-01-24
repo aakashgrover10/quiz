@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "customUser",
+            "otherEntityName": "customUser",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "userProfile"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contact",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "domain",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "expLevel",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180108211441",
+    "entityTableName": "user_profile",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

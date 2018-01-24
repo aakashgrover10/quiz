@@ -1,0 +1,85 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myQuizLabel">Create or edit a Quiz</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!quiz.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="quiz.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_startDate">Start Date</label>
+            <div class="input-group">
+                <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" [(ngModel)]="quiz.startDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_endDate">End Date</label>
+            <div class="input-group">
+                <input id="field_endDate" type="text" class="form-control" name="endDate" ngbDatepicker  #endDateDp="ngbDatepicker" [(ngModel)]="quiz.endDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status"
+                [(ngModel)]="quiz.status" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_marks">Marks</label>
+            <input type="text" class="form-control" name="marks" id="field_marks"
+                [(ngModel)]="quiz.marks" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_questionsNumber">Questions Number</label>
+            <input type="number" class="form-control" name="questionsNumber" id="field_questionsNumber"
+                [(ngModel)]="quiz.questionsNumber" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_complexity">Complexity</label>
+            <input type="text" class="form-control" name="complexity" id="field_complexity"
+                [(ngModel)]="quiz.complexity" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_position">Position</label>
+            <select class="form-control" id="field_position" name="position" [(ngModel)]="quiz.position" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="positionOption.id === quiz.position?.id ? quiz.position : positionOption" *ngFor="let positionOption of positions; trackBy: trackPositionById">{{positionOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_result">Result</label>
+            <select class="form-control" id="field_result" name="result" [(ngModel)]="quiz.result">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="resultOption.id === quiz.result?.id ? quiz.result : resultOption" *ngFor="let resultOption of results; trackBy: trackResultById">{{resultOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_questions">Questions</label>
+            <select class="form-control" id="field_questions" multiple name="questions" [(ngModel)]="quiz.questions">
+                <option [ngValue]="getSelected(quiz.questions, questionOption)" *ngFor="let questionOption of questions; trackBy: trackQuestionById">{{questionOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

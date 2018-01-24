@@ -1,0 +1,59 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "position",
+            "otherEntityName": "position",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "result",
+            "otherEntityName": "result",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "quiz"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "questions",
+            "otherEntityName": "question",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "startDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "marks",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "questionsNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "complexity",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180108211443",
+    "entityTableName": "quiz",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

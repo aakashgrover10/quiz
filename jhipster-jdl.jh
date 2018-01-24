@@ -1,0 +1,81 @@
+entity Role {
+    roleName String
+}
+
+entity CustomUser {
+    password String,
+    enabled Boolean,
+}
+
+entity UserProfile {
+    firstName String,
+    lastName String,
+    email String,
+    contact String,
+    domain String,
+    expLevel Integer
+}
+
+entity Position {
+	description String,
+	domain String,
+	status String,
+    createdBy String,
+    createdOn LocalDate
+}
+
+entity Quiz {
+    startDate LocalDate,
+    endDate LocalDate,
+    status String,
+    marks String
+    questionsNumber Integer,
+    complexity String
+}
+
+entity Question {
+    section String,
+    description String,
+    optionA String,
+    optionB String,
+    optionC String,
+    optionD String,
+    answer String,
+    marks String,
+    status String,
+    complexity String
+}
+
+entity Result {
+	obtainedMarks String,
+	percentage Double,
+	appearedOn String,
+}
+
+relationship ManyToOne {
+	CustomUser{position} to Position
+}
+
+relationship ManyToMany {
+	Quiz{questions} to Question
+}
+
+relationship OneToOne {
+	CustomUser{userProfile} to UserProfile{customUser}
+}
+
+relationship ManyToOne {
+	CustomUser{role} to Role
+}
+
+relationship OneToMany {
+	Position{quiz} to Quiz
+}
+
+relationship OneToOne {
+	Quiz{result} to Result{quiz}
+}
+
+relationship ManyToOne {
+	Question{quiz} to Quiz
+}

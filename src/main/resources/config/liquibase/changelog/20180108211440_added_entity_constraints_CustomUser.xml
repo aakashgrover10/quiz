@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity CustomUser.
+    -->
+    <changeSet id="20180108211440-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="user_profile_id"
+                                 baseTableName="custom_user"
+                                 constraintName="fk_custom_user_user_profile_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_profile"/>
+
+        <addForeignKeyConstraint baseColumnNames="position_id"
+                                 baseTableName="custom_user"
+                                 constraintName="fk_custom_user_position_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="position"/>
+
+        <addForeignKeyConstraint baseColumnNames="role_id"
+                                 baseTableName="custom_user"
+                                 constraintName="fk_custom_user_role_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="role"/>
+
+    </changeSet>
+</databaseChangeLog>

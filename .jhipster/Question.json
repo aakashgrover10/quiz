@@ -1,0 +1,59 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "quiz",
+            "otherEntityName": "quiz",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "section",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "optionA",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "optionB",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "optionC",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "optionD",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "answer",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "marks",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "complexity",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180108211444",
+    "entityTableName": "question",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

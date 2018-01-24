@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "quiz",
+            "otherEntityName": "quiz",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "result"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "obtainedMarks",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "percentage",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "appearedOn",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180108211445",
+    "entityTableName": "result",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

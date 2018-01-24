@@ -1,0 +1,251 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="manu (generated)" id="1515841726959-1">
+        <createSequence sequenceName="hibernate_sequence"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-2">
+        <createTable tableName="custom_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="custom_userPK"/>
+            </column>
+            <column name="enabled" type="BOOLEAN"/>
+            <column name="jhi_password" type="VARCHAR(255)"/>
+            <column name="position_id" type="BIGINT"/>
+            <column name="role_id" type="BIGINT"/>
+            <column name="user_profile_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-3">
+        <createTable tableName="jhi_authority">
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-4">
+        <createTable tableName="jhi_persistent_audit_event">
+            <column autoIncrement="true" name="event_id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_persistent_audit_eventPK"/>
+            </column>
+            <column name="event_date" type="BYTEA"/>
+            <column name="event_type" type="VARCHAR(255)"/>
+            <column name="principal" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-5">
+        <createTable tableName="jhi_persistent_audit_evt_data">
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-6">
+        <createTable tableName="jhi_persistent_token">
+            <column name="series" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ip_address" type="VARCHAR(39)"/>
+            <column name="token_date" type="BYTEA"/>
+            <column name="token_value" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_agent" type="VARCHAR(255)"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-7">
+        <createTable tableName="jhi_user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_userPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="BYTEA">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="BYTEA"/>
+            <column name="activated" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_key" type="VARCHAR(20)"/>
+            <column name="email" type="VARCHAR(100)"/>
+            <column name="first_name" type="VARCHAR(50)"/>
+            <column name="image_url" type="VARCHAR(256)"/>
+            <column name="lang_key" type="VARCHAR(6)"/>
+            <column name="last_name" type="VARCHAR(50)"/>
+            <column name="login" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(60)"/>
+            <column name="reset_date" type="BYTEA"/>
+            <column name="reset_key" type="VARCHAR(20)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-8">
+        <createTable tableName="jhi_user_authority">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-9">
+        <createTable tableName="position">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="positionPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="created_on" type="BYTEA"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="domain" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-10">
+        <createTable tableName="question">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="questionPK"/>
+            </column>
+            <column name="answer" type="VARCHAR(255)"/>
+            <column name="complexity" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="marks" type="VARCHAR(255)"/>
+            <column name="option_a" type="VARCHAR(255)"/>
+            <column name="option_b" type="VARCHAR(255)"/>
+            <column name="option_c" type="VARCHAR(255)"/>
+            <column name="option_d" type="VARCHAR(255)"/>
+            <column name="section" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="quiz_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-11">
+        <createTable tableName="quiz">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="quizPK"/>
+            </column>
+            <column name="complexity" type="VARCHAR(255)"/>
+            <column name="end_date" type="BYTEA"/>
+            <column name="marks" type="VARCHAR(255)"/>
+            <column name="questions_number" type="INT"/>
+            <column name="start_date" type="BYTEA"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="position_id" type="BIGINT"/>
+            <column name="result_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-12">
+        <createTable tableName="quiz_questions">
+            <column name="quizzes_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="questions_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-13">
+        <createTable tableName="result">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="resultPK"/>
+            </column>
+            <column name="appeared_on" type="VARCHAR(255)"/>
+            <column name="obtained_marks" type="VARCHAR(255)"/>
+            <column name="percentage" type="FLOAT8"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-14">
+        <createTable tableName="role">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="rolePK"/>
+            </column>
+            <column name="role_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-15">
+        <createTable tableName="user_profile">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="user_profilePK"/>
+            </column>
+            <column name="contact" type="VARCHAR(255)"/>
+            <column name="domain" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="exp_level" type="INT"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-16">
+        <addPrimaryKey columnNames="event_id, name" tableName="jhi_persistent_audit_evt_data"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-17">
+        <addPrimaryKey columnNames="user_id, authority_name" tableName="jhi_user_authority"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-18">
+        <addPrimaryKey columnNames="quizzes_id, questions_id" tableName="quiz_questions"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-19">
+        <addPrimaryKey columnNames="name" constraintName="jhi_authorityPK" tableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-20">
+        <addPrimaryKey columnNames="series" constraintName="jhi_persistent_tokenPK" tableName="jhi_persistent_token"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-21">
+        <addUniqueConstraint columnNames="user_profile_id" constraintName="UC_CUSTOM_USERUSER_PROFILE_ID_COL" tableName="custom_user"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-22">
+        <addUniqueConstraint columnNames="email" constraintName="UC_JHI_USEREMAIL_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-23">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-24">
+        <addUniqueConstraint columnNames="result_id" constraintName="UC_QUIZRESULT_ID_COL" tableName="quiz"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-25">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_user_authority" constraintName="FK290okww5jujghp4el5i7mgwu0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-26">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="jhi_persistent_audit_evt_data" constraintName="FK2ehnyx2si4tjd2nt4q7y40v8m" deferrable="false" initiallyDeferred="false" referencedColumnNames="event_id" referencedTableName="jhi_persistent_audit_event"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-27">
+        <addForeignKeyConstraint baseColumnNames="authority_name" baseTableName="jhi_user_authority" constraintName="FK4psxl0jtx6nr7rhqbynr6itoc" deferrable="false" initiallyDeferred="false" referencedColumnNames="name" referencedTableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-28">
+        <addForeignKeyConstraint baseColumnNames="user_profile_id" baseTableName="custom_user" constraintName="FK51wh99jl889s31by0srycsew6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user_profile"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-29">
+        <addForeignKeyConstraint baseColumnNames="result_id" baseTableName="quiz" constraintName="FK5kf5lavk8y8j9u469h7vgplpy" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="result"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-30">
+        <addForeignKeyConstraint baseColumnNames="position_id" baseTableName="quiz" constraintName="FK77lhjnvmqsetgcrxydmsgi7xk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="position"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-31">
+        <addForeignKeyConstraint baseColumnNames="quiz_id" baseTableName="question" constraintName="FKb0yh0c1qaxfwlcnwo9dms2txf" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="quiz"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-32">
+        <addForeignKeyConstraint baseColumnNames="position_id" baseTableName="custom_user" constraintName="FKi0m3f04skmxk3ej45ru3tmqbd" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="position"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-33">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="jhi_persistent_token" constraintName="FKmogh0vmv89yg5kofe6n3t77ud" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-34">
+        <addForeignKeyConstraint baseColumnNames="questions_id" baseTableName="quiz_questions" constraintName="FKpmfvwer12y1nrjc0efm04dq16" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="question"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-35">
+        <addForeignKeyConstraint baseColumnNames="quizzes_id" baseTableName="quiz_questions" constraintName="FKq3nc3k1d0qquekmgyliwxvt7y" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="quiz"/>
+    </changeSet>
+    <changeSet author="manu (generated)" id="1515841726959-36">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="custom_user" constraintName="FKsnjhsaew76pumqv4c81fmpp85" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="role"/>
+    </changeSet>
+</databaseChangeLog>

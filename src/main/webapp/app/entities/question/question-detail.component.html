@@ -1,0 +1,68 @@
+
+<div *ngIf="question">
+    <h2><span>Question</span> {{question.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Section</span></dt>
+        <dd>
+            <span>{{question.section}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{question.description}}</span>
+        </dd>
+        <dt><span>Option A</span></dt>
+        <dd>
+            <span>{{question.optionA}}</span>
+        </dd>
+        <dt><span>Option B</span></dt>
+        <dd>
+            <span>{{question.optionB}}</span>
+        </dd>
+        <dt><span>Option C</span></dt>
+        <dd>
+            <span>{{question.optionC}}</span>
+        </dd>
+        <dt><span>Option D</span></dt>
+        <dd>
+            <span>{{question.optionD}}</span>
+        </dd>
+        <dt><span>Answer</span></dt>
+        <dd>
+            <span>{{question.answer}}</span>
+        </dd>
+        <dt><span>Marks</span></dt>
+        <dd>
+            <span>{{question.marks}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{question.status}}</span>
+        </dd>
+        <dt><span>Complexity</span></dt>
+        <dd>
+            <span>{{question.complexity}}</span>
+        </dd>
+        <dt><span>Quiz</span></dt>
+        <dd>
+            <div *ngIf="question.quiz">
+                <a [routerLink]="['/quiz', question.quiz?.id]">{{question.quiz?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'question/'+ question.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

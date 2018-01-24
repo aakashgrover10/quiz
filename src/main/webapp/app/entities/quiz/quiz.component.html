@@ -1,0 +1,86 @@
+<div>
+    <h2>
+        <span>Quizzes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-quiz" [routerLink]="['/', { outlets: { popup: ['quiz-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Quiz
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="quizzes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Start Date</span></th>
+            <th><span>End Date</span></th>
+            <th><span>Status</span></th>
+            <th><span>Marks</span></th>
+            <th><span>Questions Number</span></th>
+            <th><span>Complexity</span></th>
+            <th><span>Position</span></th>
+            <th><span>Result</span></th>
+            <th><span>Questions</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let quiz of quizzes ;trackBy: trackId">
+                <td><a [routerLink]="['../quiz', quiz.id ]">{{quiz.id}}</a></td>
+                <td>{{quiz.startDate | date:'mediumDate'}}</td>
+                <td>{{quiz.endDate | date:'mediumDate'}}</td>
+                <td>{{quiz.status}}</td>
+                <td>{{quiz.marks}}</td>
+                <td>{{quiz.questionsNumber}}</td>
+                <td>{{quiz.complexity}}</td>
+                <td>
+                    <div *ngIf="quiz.position">
+                        <a [routerLink]="['../position', quiz.position?.id ]" >{{quiz.position?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="quiz.result">
+                        <a [routerLink]="['../result', quiz.result?.id ]" >{{quiz.result?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let questions of quiz.questions; let last = last">
+                            <a class="form-control-static" [routerLink]="['../question', questions?.id ]">{{questions.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../quiz', quiz.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'quiz/'+ quiz.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'quiz/'+ quiz.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

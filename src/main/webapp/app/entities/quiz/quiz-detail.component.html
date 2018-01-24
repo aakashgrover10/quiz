@@ -1,0 +1,64 @@
+
+<div *ngIf="quiz">
+    <h2><span>Quiz</span> {{quiz.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Start Date</span></dt>
+        <dd>
+            <span>{{quiz.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>End Date</span></dt>
+        <dd>
+            <span>{{quiz.endDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{quiz.status}}</span>
+        </dd>
+        <dt><span>Marks</span></dt>
+        <dd>
+            <span>{{quiz.marks}}</span>
+        </dd>
+        <dt><span>Questions Number</span></dt>
+        <dd>
+            <span>{{quiz.questionsNumber}}</span>
+        </dd>
+        <dt><span>Complexity</span></dt>
+        <dd>
+            <span>{{quiz.complexity}}</span>
+        </dd>
+        <dt><span>Position</span></dt>
+        <dd>
+            <div *ngIf="quiz.position">
+                <a [routerLink]="['/position', quiz.position?.id]">{{quiz.position?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Result</span></dt>
+        <dd>
+            <div *ngIf="quiz.result">
+                <a [routerLink]="['/result', quiz.result?.id]">{{quiz.result?.id}}</a>
+            </div>
+        </dd>
+        <dt><span>Questions</span></dt>
+        <dd>
+            <span *ngFor="let questions of quiz.questions; let last = last">
+                <a [routerLink]="['/question', questions?.id ]">{{questions.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'quiz/'+ quiz.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
